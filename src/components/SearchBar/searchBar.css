@@ -1,0 +1,39 @@
+.searchBar,
+.submitBtn {
+  height: 2rem;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
+.searchBar {
+  background: #ddd;
+  font-size: 1.2rem;
+  width: 20ch;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.searchBar:focus {
+  border: 1px solid #333;
+  border-right: none;
+}
+
+.submitBtn {
+  background: rgb(100, 149, 237);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.submitBtn:hover {
+  background: rgb(90, 139, 227);
+  cursor: pointer;
+}
+.submitBtn:focus {
+  background: rgb(90, 139, 227);
+  border: 1px solid #333;
+}
+
+.autoCompleteOptions{
+  position: absolute;
+}

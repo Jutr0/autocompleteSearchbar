@@ -1,5 +1,3 @@
-import axios from "axios"
-import store from "./store"
-import { setLoading, throwError, updateUsers } from "./user/userActionsCreators"
+import store from "./store";
 
 export default store;
