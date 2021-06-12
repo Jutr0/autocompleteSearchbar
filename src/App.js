@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SearchBar from "./components/SearchBar/SearchBar";
 
-import { getUsersFromAPI as getUsers } from "./redux/user/userActionsCreators";
+import { getUsersFromAPI } from "./redux/user/userActionsCreators";
 
 import "./app.css";
 
 const App = (props) => {
-  const { users, loading, error, getUsers } = props;
+  const { users, loading, error, getUsersFromAPI } = props;
+
   useEffect(() => {
-    getUsers();
+    getUsersFromAPI();
   }, []);
   return (
     <div className="App">
@@ -18,13 +19,13 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({ users, loading, error }) => ({
-  users,
-  loading,
-  error,
+const mapStateToProps = ({ userReducer }) => ({
+  users: userReducer.users,
+  loading: userReducer.loading,
+  error: userReducer.error,
 });
 const mapDispatchToProps = {
-  getUsers,
+  getUsersFromAPI,
 };
 
 const AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);

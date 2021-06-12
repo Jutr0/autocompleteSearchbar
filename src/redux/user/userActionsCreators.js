@@ -22,7 +22,9 @@ export const getUsersFromAPI = () => (dispatch) => {
   return axios
     .get("https://jsonplaceholder.typicode.com/users")
     .then((res) => {
-      dispatch(updateUsers(res.data.sort((a,b)=>a.name>b.name?1:-1)));
+      dispatch(
+        updateUsers(res.data.sort((a, b) => (a.name > b.name ? 1 : -1)))
+      );
       dispatch(setLoading(false));
     })
     .catch((e) => {

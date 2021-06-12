@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const AutocompleteOption = (props)=>{
-    const {name} = props
+const AutocompleteOption = (props) => {
+  const { name } = props;
 
-    return(<li>{name}</li>)
-}
+  return <li>{name}</li>;
+};
 
-export default AutocompleteOption
+export default AutocompleteOption;

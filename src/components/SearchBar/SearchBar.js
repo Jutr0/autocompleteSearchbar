@@ -1,56 +1,64 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import store from "../../redux/store";
 import AutocompleteOption from "./AutocompleteOption./AutcompleteOption";
+import { updateInput } from "../../redux/autocompleteInput/ipnutActionsCreators";
+import {updateAUsers} from '../../redux/autocompleteUsers/aUsersActionsCreators'
+
 
 import "./searchBar.css";
 
-const SearchBar = ({ users }) => {
-  const [userInput, setUserInput] = useState("");
-  const [auotcompleteUsers, setAutocompleteUsers] = useState([]);
+const SearchBar = ({
+  users,
+  autocompleteInput,
+  updateInput,
+  autocompleteUsers,
+  updateAUsers
+}) => {
 
   const handleChange = (e) => {
-    setUserInput(e.target.value);
+    updateInput(e.target.value);
   };
 
   useEffect(() => {
-
-    if (userInput.trim() === "") {
-
-      setAutocompleteUsers([]);
-
+    if (autocompleteInput.trim() === "") {
+      updateAUsers([]);
     } else {
-
       const tempUsers = users
         .filter(
           (user) =>
-            user.name.toLowerCase().indexOf(userInput.trim().toLowerCase()) >= 0
-        )
-        .map((user) => <AutocompleteOption name={user.name}/>);
-
-      setAutocompleteUsers(tempUsers);
-
+            user.name
+              .toLowerCase()
+              .indexOf(autocompleteInput.trim().toLowerCase()) >= 0
+        ).map(user=>user.name)
+      updateAUsers(tempUsers);
     }
-  }, [userInput]);
+  }, [autocompleteInput]);
 
   return (
     <>
       <form className="searchForm">
         <input
           className="searchBar"
-          value={userInput}
+          value={autocompleteInput}
           onChange={handleChange}
           type="text"
           placeholder="User"
         ></input>
         <button className="submitBtn">Submit</button>
       </form>
-      <ul className="autoCompleteOptions">
-        {auotcompleteUsers}
-      </ul>
+      <ul className="autoCompleteOptions">{autocompleteUsers.map(name=>(<AutocompleteOption name={name}/>))}</ul>
     </>
   );
 };
 
-const mapStateToProps = ({ users }) => ({ users });
-
-export default connect(mapStateToProps)(SearchBar);
+const mapStateToProps = ({ userReducer, autocompleteInput, aUsersReducer }) => ({
+  users: userReducer.users,
+  autocompleteInput: autocompleteInput.autocompleteInput,
+  autocompleteUsers: aUsersReducer.aUsers
+});
+const mapDispatchToProps = {
+  updateInput,
+  updateAUsers
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
