@@ -1,0 +1,16 @@
+.autocompleteOption {
+  background: #f7f7f7;
+  width: calc(30ch + 33px);
+  font-size: 1.2rem;
+  list-style-type: none;
+  padding: 5px 0 5px 5px;
+  border: 1px solid black;
+  border-top: none;
+}
+.autocompleteOption:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+.autocompleteOption-active {
+  background-color: dodgerblue;
+}

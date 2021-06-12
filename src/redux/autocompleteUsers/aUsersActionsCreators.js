@@ -6,3 +6,10 @@ export const updateAUsers = (aUsers) => {
     payload: aUsers,
   };
 };
+
+export const updateCurrIndex = (currIndex) => {
+    return {
+        type:aUsersActions.UPDATE_CURRENT_INDEX,
+        payload: currIndex
+    }
+}
