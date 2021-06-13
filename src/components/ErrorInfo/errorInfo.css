@@ -1,0 +1,6 @@
+.errorInfoContainer{
+    color:red;
+    font-size: 3rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+}

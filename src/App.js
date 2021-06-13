@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import { getUsersFromAPI } from "./redux/user/userActionsCreators";
 
 import "./app.css";
+import ErrorInfo from "./components/ErrorInfo/ErrorInfo";
 
 const App = (props) => {
   const { users, loading, error, getUsersFromAPI } = props;
@@ -14,7 +15,8 @@ const App = (props) => {
   }, []);
   return (
     <div className="App">
-      <SearchBar />
+      {error?<ErrorInfo/>:<SearchBar />
+    }
     </div>
   );
 };
